@@ -99,9 +99,13 @@ svg:not(:root) {
 
         &[aria-disabled="false"] {
             cursor: pointer;
-            &:hover {
-                background-color: @blue10;
+
+            &[aria-dithered="false"] {
+                &:hover {
+                    background-color: @blue10;
+                }
             }
+
             & .carbon-legend-item-btn,
             & .carbon-legend-item-text {
                 cursor: pointer;
@@ -141,6 +145,17 @@ svg:not(:root) {
 
         & .carbon-legend-item-text {
             word-wrap: break-word;
+        }
+    }
+
+    & .carbon-legend-item[aria-dithered="true"] {
+        & .carbon-legend-item-btn {
+            opacity: 0.35;
+        }
+
+        & .carbon-legend-item-text {
+            color: #bcbfc0;
+            opacity: 0.35;
         }
     }
 

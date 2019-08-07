@@ -30,6 +30,7 @@ import {
     fetchElementByClass,
     getAxes,
     getInput,
+    getInputWithPan,
     inputSecondary,
     valuesDefault,
     valuesTimeSeries
@@ -72,6 +73,67 @@ describe("Line", () => {
             expect(() => {
                 graphDefault.loadContent(new Line(getInput([], false, false)));
             }).toThrowError(errors.THROW_MSG_NO_DATA_POINTS);
+        });
+        it("display the legend when no values are provided with isPanningMode as true", () => {
+            graphDefault.loadContent(
+                new Line(getInputWithPan([], false, false))
+            );
+            const legendContainer = fetchElementByClass(
+                lineGraphContainer,
+                styles.legend
+            );
+            const legendItems = legendContainer.children;
+            expect(legendContainer).not.toBeNull();
+            expect(legendContainer.tagName).toBe("UL");
+            expect(legendItems.length).toBe(1);
+            const legendItem = document.body.querySelector(
+                `.${styles.legendItem}`
+            );
+            expect(legendItem.getAttribute("aria-dithered")).toBe("true");
+        });
+        it("display the legend when value is undefined are provided with isPanningMode as true", () => {
+            const noValueInput = {
+                key: `uid_1`,
+                color: COLORS[Object.keys(COLORS)[1]],
+                shape: SHAPES.RHOMBUS,
+                yAxis: "y",
+                label: {
+                    display: "Data Label A"
+                },
+                pan: {
+                    enabled: true
+                },
+                values: undefined
+            };
+            graphDefault.loadContent(new Line(noValueInput));
+            const legendContainer = fetchElementByClass(
+                lineGraphContainer,
+                styles.legend
+            );
+            const legendItems = legendContainer.children;
+            expect(legendContainer).not.toBeNull();
+            expect(legendContainer.tagName).toBe("UL");
+            expect(legendItems.length).toBe(1);
+            const legendItem = document.body.querySelector(
+                `.${styles.legendItem}`
+            );
+            expect(legendItem.getAttribute("aria-dithered")).toBe("true");
+        });
+        it("display the legend when values are provided with isPanningMode as true", () => {
+            const input = getInputWithPan(valuesDefault);
+            graphDefault.loadContent(new Line(input));
+            const legendContainer = fetchElementByClass(
+                lineGraphContainer,
+                styles.legend
+            );
+            const legendItems = legendContainer.children;
+            expect(legendContainer).not.toBeNull();
+            expect(legendContainer.tagName).toBe("UL");
+            expect(legendItems.length).toBe(1);
+            const legendItem = document.body.querySelector(
+                `.${styles.legendItem}`
+            );
+            expect(legendItem.getAttribute("aria-dithered")).toBe("false");
         });
         it("does not throw error when datetime values have milliseconds", () => {
             expect(() => {

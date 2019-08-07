@@ -397,3 +397,51 @@ export const renderLineXOrientationTop = (id) => {
     );
     return lineDefault;
 };
+export const renderLinePanningMode = (id) => {
+    const line = Carbon.api.line(
+        getDemoData(`#${id}`, "PANNING_MODE_DATA").data[0]
+    );
+    const lineDefault = Carbon.api.graph(getDemoData(`#${id}`, "LINE_DEFAULT"));
+    lineDefault.loadContent(line);
+    return lineDefault;
+};
+export const renderMultiLinePanningMode = (id) => {
+    const lineDefault = Carbon.api.graph(getDemoData(`#${id}`, "LINE_DEFAULT"));
+    lineDefault.loadContent(
+        Carbon.api.line(getDemoData(`#${id}`, "PANNING_MODE_DATA").data[0])
+    );
+    setTimeout(
+        () =>
+            lineDefault.graphContainer
+                ? lineDefault.loadContent(
+                      Carbon.api.line(
+                          getDemoData(`#${id}`, "PANNING_MODE_DATA").data[1]
+                      )
+                  )
+                : "",
+        750
+    );
+    setTimeout(
+        () =>
+            lineDefault.graphContainer
+                ? lineDefault.loadContent(
+                      Carbon.api.line(
+                          getDemoData(`#${id}`, "PANNING_MODE_DATA").data[2]
+                      )
+                  )
+                : "",
+        750 * 2
+    );
+    setTimeout(
+        () =>
+            lineDefault.graphContainer
+                ? lineDefault.loadContent(
+                      Carbon.api.line(
+                          getDemoData(`#${id}`, "PANNING_MODE_DATA").data[3]
+                      )
+                  )
+                : "",
+        750 * 2
+    );
+    return lineDefault;
+};

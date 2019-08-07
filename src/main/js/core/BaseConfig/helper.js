@@ -30,7 +30,13 @@ export const validateBaseInput = (input) => {
         throw new Error(errors.THROW_MSG_UNIQUE_KEY_NOT_PROVIDED);
     }
     if (utils.isEmpty(input.values)) {
-        throw new Error(errors.THROW_MSG_NO_DATA_POINTS);
+        if (input.pan && input.pan.enabled) {
+            if (utils.isUndefined(input.values)) {
+                input.values = [];
+            }
+        } else {
+            throw new Error(errors.THROW_MSG_NO_DATA_POINTS);
+        }
     }
 };
 /**

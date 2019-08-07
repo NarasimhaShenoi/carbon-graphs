@@ -70,15 +70,17 @@ const loadLegendItem = (legendSVG, t, shownTargets, eventHandlers) => {
     validateLegendLabel(t.label);
     const text = getText(t.label.display);
     const index = shownTargets.indexOf(t.key);
+    const dithered = !!(t.pan && t.pan.enabled) && utils.isEmpty(t.values);
     const itemPath = legendSVG
         .append("li")
         .classed(styles.legendItem, true)
         .attr("aria-selected", index > -1)
         .attr("aria-disabled", !!t.label.isDisabled)
+        .attr("aria-dithered", dithered)
         .attr("role", "listitem")
         .attr("aria-labelledby", text)
         .attr("aria-describedby", t.key);
-    if (!t.label.isDisabled && index > -1) {
+    if (!t.label.isDisabled && !dithered && index > -1) {
         itemPath
             .on("click", function() {
                 return eventHandlers.clickHandler(this, t);
