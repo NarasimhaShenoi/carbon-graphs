@@ -68,9 +68,7 @@ import {
     renderLineY2Axis,
     renderLineYHidden,
     renderMultiLine,
-    renderMultiLineRegion,
-    renderLinePanningMode,
-    renderMultiLinePanningMode
+    renderMultiLineRegion
 } from "./examples/controls/line";
 import {
     renderMultiPairedResultRegion,
@@ -154,11 +152,6 @@ renderSiteApp(
                     pathname: "/line/shapes-hidden",
                     content: renderLineShapesHidden,
                     title: "Shapes Hidden"
-                },
-                {
-                    pathname: "/line/panning-mode",
-                    content: renderLinePanningMode,
-                    title: "Panning Mode"
                 }
             ]
         },
@@ -169,11 +162,6 @@ renderSiteApp(
                     pathname: "/multi-line/simple",
                     content: renderMultiLine,
                     title: "Simple"
-                },
-                {
-                    pathname: "/multi-line/panning-mode",
-                    content: renderMultiLinePanningMode,
-                    title: "Panning Mode"
                 }
             ]
         },

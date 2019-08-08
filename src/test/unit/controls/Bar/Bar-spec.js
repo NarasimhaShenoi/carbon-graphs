@@ -70,7 +70,7 @@ describe("Bar", () => {
         });
         it("throws error when no values are provided", () => {
             const input = utils.deepClone(getInput(valuesDefault));
-            input.values = [];
+            input.values = undefined;
             expect(() => {
                 graphDefault.loadContent(new Bar(input));
             }).toThrowError(errors.THROW_MSG_NO_DATA_POINTS);

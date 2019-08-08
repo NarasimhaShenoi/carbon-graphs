@@ -29,14 +29,8 @@ export const validateBaseInput = (input) => {
     if (utils.isEmpty(input.key)) {
         throw new Error(errors.THROW_MSG_UNIQUE_KEY_NOT_PROVIDED);
     }
-    if (utils.isEmpty(input.values)) {
-        if (input.pan && input.pan.enabled) {
-            if (utils.isUndefined(input.values)) {
-                input.values = [];
-            }
-        } else {
-            throw new Error(errors.THROW_MSG_NO_DATA_POINTS);
-        }
+    if (utils.isUndefined(input.values) || input.values === null) {
+        throw new Error(errors.THROW_MSG_NO_DATA_POINTS);
     }
 };
 /**

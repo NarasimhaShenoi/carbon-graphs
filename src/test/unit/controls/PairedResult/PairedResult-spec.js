@@ -75,7 +75,7 @@ describe("PairedResult", () => {
         it("throws error when no values are provided", () => {
             expect(() => {
                 graphDefault.loadContent(
-                    new PairedResult(getInput([], false, false))
+                    new PairedResult(getInput(undefined, false, false))
                 );
             }).toThrowError(errors.THROW_MSG_NO_DATA_POINTS);
         });

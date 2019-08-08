@@ -17,7 +17,7 @@ export const dataPointClickHandlerSpy = sinon.spy();
  * @returns {object} input JSON
  */
 export const getInput = (
-    values = [],
+    values,
     isDefaultColor = true,
     isDefaultShape = true,
     isY2Axis = false
@@ -26,34 +26,6 @@ export const getInput = (
     color: !isDefaultColor ? COLORS[Object.keys(COLORS)[1]] : "",
     shape: !isDefaultShape ? SHAPES.RHOMBUS : "",
     onClick: dataPointClickHandlerSpy,
-    yAxis: isY2Axis ? "y2" : "y",
-    label: {
-        display: "Data Label A"
-    },
-    values
-});
-/**
- * Creates and returns an example input with data point values, when panning mode is enabled
- *
- * @param {Array} values - x and y co-ordinate values
- * @param {boolean} isDefaultColor - if true, doesnt load the COLOR
- * @param {boolean} isDefaultShape - if true, doesnt load the SHAPE
- * @param {boolean} isY2Axis - if true, then "y2"
- * @returns {object} input JSON
- */
-export const getInputWithPan = (
-    values = [],
-    isDefaultColor = true,
-    isDefaultShape = true,
-    isY2Axis = false
-) => ({
-    key: `uid_1`,
-    color: !isDefaultColor ? COLORS[Object.keys(COLORS)[1]] : "",
-    shape: !isDefaultShape ? SHAPES.RHOMBUS : "",
-    onClick: dataPointClickHandlerSpy,
-    pan: {
-        enabled: true
-    },
     yAxis: isY2Axis ? "y2" : "y",
     label: {
         display: "Data Label A"
