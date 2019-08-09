@@ -75,21 +75,6 @@ describe("Line", () => {
                 );
             }).toThrowError(errors.THROW_MSG_NO_DATA_POINTS);
         });
-        it("display the legend when empty array is provided as input", () => {
-            graphDefault.loadContent(new Line(getInput([], false, true)));
-            const legendContainer = fetchElementByClass(
-                lineGraphContainer,
-                styles.legend
-            );
-            const legendItems = legendContainer.children;
-            expect(legendContainer).not.toBeNull();
-            expect(legendContainer.tagName).toBe("UL");
-            expect(legendItems.length).toBe(1);
-            const legendItem = document.body.querySelector(
-                `.${styles.legendItem}`
-            );
-            expect(legendItem.getAttribute("aria-disabled")).toBe("true");
-        });
         it("display the legend when values are provided", () => {
             const input = getInput(valuesDefault);
             graphDefault.loadContent(new Line(input));
@@ -940,6 +925,21 @@ describe("Line", () => {
             });
         });
         describe("prepares to load legend item", () => {
+            it("display the legend when empty array is provided as input", () => {
+                graphDefault.loadContent(new Line(getInput([], false, true)));
+                const legendContainer = fetchElementByClass(
+                    lineGraphContainer,
+                    styles.legend
+                );
+                const legendItems = legendContainer.children;
+                expect(legendContainer).not.toBeNull();
+                expect(legendContainer.tagName).toBe("UL");
+                expect(legendItems.length).toBe(1);
+                const legendItem = document.body.querySelector(
+                    `.${styles.legendItem}`
+                );
+                expect(legendItem.getAttribute("aria-disabled")).toBe("true");
+            });
             it("does not load if legend is opted to be hidden", () => {
                 graphDefault.destroy();
                 const input = getAxes(axisDefault);

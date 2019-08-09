@@ -75,6 +75,21 @@ describe("Bar", () => {
                 graphDefault.loadContent(new Bar(input));
             }).toThrowError(errors.THROW_MSG_NO_DATA_POINTS);
         });
+        it("display the legend when empty array is provided as input", () => {
+            graphDefault.loadContent(new Bar(getInput([])));
+            const legendContainer = fetchElementByClass(
+                barGraphContainer,
+                styles.legend
+            );
+            const legendItems = legendContainer.children;
+            expect(legendContainer).not.toBeNull();
+            expect(legendContainer.tagName).toBe("UL");
+            expect(legendItems.length).toBe(1);
+            const legendItem = document.body.querySelector(
+                `.${styles.legendItem}`
+            );
+            expect(legendItem.getAttribute("aria-disabled")).toBe("true");
+        });
         it("throws error when no ticks are provided for x-axis", () => {
             const axisData = utils.deepClone(getAxes(axisDefault));
             axisData.axis.x.ticks = {};

@@ -70,17 +70,17 @@ const loadLegendItem = (legendSVG, t, shownTargets, eventHandlers) => {
     validateLegendLabel(t.label);
     const text = getText(t.label.display);
     const index = shownTargets.indexOf(t.key);
-    const disabled =
-        !!t.label.isDisabled || (!!t.values && t.values.length == 0);
+    const shouldForceDisableLegendItem =
+        !!t.label.isDisabled || utils.isEmptyArray(t.values);
     const itemPath = legendSVG
         .append("li")
         .classed(styles.legendItem, true)
         .attr("aria-selected", index > -1)
-        .attr("aria-disabled", disabled)
+        .attr("aria-disabled", shouldForceDisableLegendItem)
         .attr("role", "listitem")
         .attr("aria-labelledby", text)
         .attr("aria-describedby", t.key);
-    if (!disabled && index > -1) {
+    if (!shouldForceDisableLegendItem && index > -1) {
         itemPath
             .on("click", function() {
                 return eventHandlers.clickHandler(this, t);
@@ -95,7 +95,7 @@ const loadLegendItem = (legendSVG, t, shownTargets, eventHandlers) => {
     itemPath
         .append("button")
         .classed(styles.legendItemBtn, true)
-        .attr("tabindex", disabled ? -1 : 0)
+        .attr("tabindex", shouldForceDisableLegendItem ? -1 : 0)
         .append(() =>
             new Shape(getShapeForTarget(t)).getShapeElement(
                 getDefaultSVGProps({
