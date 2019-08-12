@@ -102,6 +102,7 @@ describe("PairedResult", () => {
                 `.${styles.legendItem}`
             );
             expect(legendItem.getAttribute("aria-disabled")).toBe("true");
+            expect(legendItem.getAttribute("aria-selected")).toBe("true");
         });
         it("does not throw error when datetime values have milliseconds", () => {
             expect(() => {

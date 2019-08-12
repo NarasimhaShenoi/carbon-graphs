@@ -946,6 +946,7 @@ describe("Line", () => {
                     `.${styles.legendItem}`
                 );
                 expect(legendItem.getAttribute("aria-disabled")).toBe("true");
+                expect(legendItem.getAttribute("aria-selected")).toBe("true");
             });
             it("does not load if legend is opted to be hidden", () => {
                 graphDefault.destroy();

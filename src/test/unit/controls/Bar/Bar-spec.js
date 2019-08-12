@@ -96,6 +96,7 @@ describe("Bar", () => {
                 `.${styles.legendItem}`
             );
             expect(legendItem.getAttribute("aria-disabled")).toBe("true");
+            expect(legendItem.getAttribute("aria-selected")).toBe("true");
         });
         it("throws error when no ticks are provided for x-axis", () => {
             const axisData = utils.deepClone(getAxes(axisDefault));
