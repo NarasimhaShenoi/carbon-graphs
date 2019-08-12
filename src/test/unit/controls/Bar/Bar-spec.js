@@ -75,6 +75,13 @@ describe("Bar", () => {
                 graphDefault.loadContent(new Bar(input));
             }).toThrowError(errors.THROW_MSG_NO_DATA_POINTS);
         });
+        it("does not throw error when empty array is provided", () => {
+            const input = utils.deepClone(getInput(valuesDefault));
+            input.values = [];
+            expect(() => {
+                graphDefault.loadContent(new Bar(input));
+            }).not.toThrow();
+        });
         it("display the legend when empty array is provided as input", () => {
             graphDefault.loadContent(new Bar(getInput([])));
             const legendContainer = fetchElementByClass(

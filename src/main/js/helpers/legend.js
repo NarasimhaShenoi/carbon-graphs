@@ -75,7 +75,7 @@ const loadLegendItem = (legendSVG, t, shownTargets, eventHandlers) => {
     const itemPath = legendSVG
         .append("li")
         .classed(styles.legendItem, true)
-        .attr("aria-selected", index > -1)
+        .attr("aria-selected", shouldForceDisableLegendItem || index > -1)
         .attr("aria-disabled", shouldForceDisableLegendItem)
         .attr("role", "listitem")
         .attr("aria-labelledby", text)

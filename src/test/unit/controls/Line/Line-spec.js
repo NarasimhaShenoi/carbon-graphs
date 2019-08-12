@@ -91,6 +91,13 @@ describe("Line", () => {
             );
             expect(legendItem.getAttribute("aria-disabled")).toBe("false");
         });
+        it("does not throw error when empty array is provided", () => {
+            const input = utils.deepClone(getInput(valuesDefault));
+            input.values = [];
+            expect(() => {
+                graphDefault.loadContent(new Line(input));
+            }).not.toThrow();
+        });
         it("does not throw error when datetime values have milliseconds", () => {
             expect(() => {
                 const graphTimeSeries = new Graph(getAxes(axisTimeSeries));
