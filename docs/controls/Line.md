@@ -206,6 +206,7 @@ Each line can have a legendOptions object in [Values](#values) level.
 | showShape     | boolean  | true    | Display Shape in the legend.                          |
 | showLine      | boolean  | false   | Display Line in the legend.                           |
 | style         | object   | {}      | Any style that can be applied. Refer [Styles](#style) |
+| showElement   | boolean  | true    | Toggle to hide legend when legend item has no data.   |
 
 ### Values
 

@@ -45,6 +45,14 @@ const validateLegendLabel = (label) => {
  */
 const getText = (text) => utils.sanitize(text);
 /**
+ * Hide legend when legend item has no data and showElement set to false
+ *
+ * @private
+ * @param {*} input item object processed from the input JSON
+ * @returns {string} returns none if legend is to be hide 
+ */
+const hideLegend = (input) => input.legendOptions && input.legendOptions.showElement === false && utils.isEmptyArray(input.values)? "none": "";
+/**
  * Loads the legend items. The values are taken from the Labels property of the input JSON
  * The click and the hover events are only registered when there are datapoints matching the
  * unique ids or have the isDisabled flag turned off.
@@ -78,6 +86,7 @@ const loadLegendItem = (legendSVG, t, config, eventHandlers) => {
         .classed(styles.legendItem, true)
         .attr("aria-current", shouldForceDisableLegendItem || index > -1)
         .attr("aria-disabled", shouldForceDisableLegendItem)
+        .style("display", hideLegend(t))
         .attr("role", "listitem")
         .attr("aria-labelledby", text)
         .attr("aria-describedby", t.key)
@@ -125,7 +134,7 @@ const loadLegendItem = (legendSVG, t, config, eventHandlers) => {
  */
 const processLegendOptions = (buttonPath, input) => {
     if (input.legendOptions) {
-        if (input.legendOptions.showShape) {
+        if (input.legendOptions.showShape || input.legendOptions.showElement) {
             createLegendIcon(buttonPath, input);
         }
         if (input.legendOptions.showLine) {
@@ -385,7 +394,8 @@ const loadPieLegendItem = (legendSVG, dataTarget, { hoverHandler }, config) => {
 const getDefaultLegendOptions = (graphConfig, dataTarget) => {
     const legendOptions = getDefaultValue(dataTarget.legendOptions, {
         showShape: true,
-        showLine: false
+        showLine: false,
+        showElement: true
     });
     legendOptions.style = getDefaultValue(legendOptions.style, {});
     legendOptions.style = {
