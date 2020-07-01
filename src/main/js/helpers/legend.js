@@ -134,6 +134,7 @@ const loadLegendItem = (legendSVG, t, config, eventHandlers) => {
  */
 const processLegendOptions = (buttonPath, input) => {
     if (input.legendOptions) {
+        // Create a legend icon only if the showShape is true or showElement prop is true
         if (input.legendOptions.showShape || input.legendOptions.showElement) {
             createLegendIcon(buttonPath, input);
         }
