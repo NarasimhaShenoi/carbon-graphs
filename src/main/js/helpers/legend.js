@@ -48,7 +48,7 @@ const getText = (text) => utils.sanitize(text);
  * Hide legend when legend item has no data and showElement set to false
  *
  * @private
- * @param {*} input item object processed from the input JSON
+ * @param {object} input item object processed from the input JSON
  * @returns {string} returns none if legend is to be hide 
  */
 const hideLegend = (input) => input.legendOptions && input.legendOptions.showElement === false && utils.isEmptyArray(input.values)? "none": "";
