@@ -45,11 +45,11 @@ const validateLegendLabel = (label) => {
  */
 const getText = (text) => utils.sanitize(text);
 /**
- * Hide legend when legend item has no data and showElement set to false
+ * Hide legend when legend item has no data and showElement is set to false
  *
  * @private
  * @param {object} input item object processed from the input JSON
- * @returns {string} returns none if legend is to be hide 
+ * @returns {string} returns "none" if legend is to be hidden otherwise returns empty string 
  */
 const hideLegend = (input) => input.legendOptions && input.legendOptions.showElement === false && utils.isEmptyArray(input.values)? "none": "";
 /**
