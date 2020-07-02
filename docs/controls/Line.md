@@ -203,10 +203,15 @@ Each line can have a legendOptions object in [Values](#values) level.
 
 | Property Name | Expected | Default | Description                                           |
 | ------------- | -------- | ------- | ----------------------------------------------------- |
-| showElement   | boolean  | true    | Toggle to hide legend when legend item has no data.   |
 | showLine      | boolean  | false   | Display Line in the legend.                           |
 | showShape     | boolean  | true    | Display Shape in the legend.                          |
 | style         | object   | {}      | Any style that can be applied. Refer [Styles](#style) |
+
+#### Optional
+
+| Property Name | Expected | Default | Description                                           |
+| ------------- | -------- | ------- | ----------------------------------------------------- |
+| showElement   | boolean  | true    | Toggle to hide legend when legend item has no data.   |
 
 ### Values
 
