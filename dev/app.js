@@ -89,7 +89,7 @@ import {
     renderLineWithShapesShownPerDataSet,
     renderDisableCalibration,
     renderLineGraphAndLegendPaddingReduced,
-    renderSupressLegend
+    renderSuppressLegend
 } from "./examples/controls/line";
 import {
     renderMultiPairedResultRegion,
@@ -248,9 +248,9 @@ renderSiteApp(
                     title: "Graph and Legend Padding Reduced"
                 },
                 {
-                    pathname: "/line/Supress-legend",
-                    content: renderSupressLegend,
-                    title: "Supress Legend"
+                    pathname: "/line/Suppress-legend",
+                    content: renderSuppressLegend,
+                    title: "Suppress Legend"
                 },
             ]
         },

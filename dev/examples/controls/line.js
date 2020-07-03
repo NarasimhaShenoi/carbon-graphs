@@ -579,7 +579,7 @@ export const renderLineGraphAndLegendPaddingReduced = (id) => {
     );
     return lineTime;
 };
-export const renderSupressLegend = (id) => {
+export const renderSuppressLegend = (id) => {
     const lineDefault = Carbon.api.graph(getDemoData(`#${id}`, "LINE_DEFAULT"));
     lineDefault.loadContent(
         Carbon.api.line(getDemoData(`#${id}`, "LINE_DEFAULT").data[0])
