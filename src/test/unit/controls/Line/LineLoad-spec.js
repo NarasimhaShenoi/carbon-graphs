@@ -1233,12 +1233,16 @@ describe("Line - Load", () => {
                     showElement: false
                 }
                 graphDefault.loadContent(new Line(input));
-                const legendItem = fetchElementByClass(
+                const legendContainer = fetchElementByClass(
                     lineGraphContainer,
                     styles.legendItem
                 );
-                const svgElements = legendItem.querySelectorAll("svg");
-                expect(svgElements.length).toBe(0);
+                expect(legendContainer).not.toBeNull();
+                expect(legendContainer.tagName).toBe("LI");
+                const legendItem = document.body.querySelector(
+                    `.${styles.legendItem}`
+                );
+                expect(legendItem.getAttribute("style")).toBe("display: none; padding: 4px 8px;");
             })
         });
         describe("if legend has no data and user sets showElement to be true", () => {
