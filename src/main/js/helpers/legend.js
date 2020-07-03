@@ -51,7 +51,7 @@ const getText = (text) => utils.sanitize(text);
  * @param {object} input item object processed from the input JSON
  * @returns {string} returns "none" if legend is to be hidden otherwise returns empty string 
  */
-const hideLegend = (input) => input.legendOptions && input.legendOptions.showElement === false && utils.isEmptyArray(input.values)? "none": "";
+const legendDisplayStyle = (input) => input.legendOptions && input.legendOptions.showElement === false && utils.isEmptyArray(input.values)? "none": "";
 /**
  * Loads the legend items. The values are taken from the Labels property of the input JSON
  * The click and the hover events are only registered when there are datapoints matching the
@@ -86,7 +86,7 @@ const loadLegendItem = (legendSVG, t, config, eventHandlers) => {
         .classed(styles.legendItem, true)
         .attr("aria-current", shouldForceDisableLegendItem || index > -1)
         .attr("aria-disabled", shouldForceDisableLegendItem)
-        .style("display", hideLegend(t))
+        .style("display", legendDisplayStyle(t))
         .attr("role", "listitem")
         .attr("aria-labelledby", text)
         .attr("aria-describedby", t.key)
