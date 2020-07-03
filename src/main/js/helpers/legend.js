@@ -398,6 +398,9 @@ const getDefaultLegendOptions = (graphConfig, dataTarget) => {
         showLine: false,
         showElement: true
     });
+    legendOptions.showShape = getDefaultValue(legendOptions.showShape, true);
+    legendOptions.showLine = getDefaultValue(legendOptions.showLine, false);
+    legendOptions.showElement = getDefaultValue(legendOptions.showElement, true);
     legendOptions.style = getDefaultValue(legendOptions.style, {});
     legendOptions.style = {
         strokeDashArray: getStrokeDashArray(legendOptions.style)
