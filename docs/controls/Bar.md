@@ -220,7 +220,7 @@ Refer [Graph](../core/Graph.md) `Root` for more details.
 
 ### LegendOptions
 
-Each line can have a legendOptions object in [Values](#values) level.
+Each bar can have a legendOptions object in [Values](#values) level.
 
 #### Optional
 
