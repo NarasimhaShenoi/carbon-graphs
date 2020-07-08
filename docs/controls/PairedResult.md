@@ -118,7 +118,7 @@ Refer [Graph](../core/Graph.md) `Root` for more details.
 | color         | string   | COLORS.BLACK       | Color for the data point                                                          |
 | shape         | string   | SHAPES.DARK.CIRCLE | Shape for representing the data points                                            |
 | onClick       | Function | undefined          | Any action that can be performed when clicking on the data point                  |
-| legendOptions | object   | undefined          | Option to show/hide shape and/or line. Refer [LegendOption(#legendOptions)        |
+| legendOptions | object   | undefined          | Option to show/hide shape and/or line. Refer [LegendOptions](#legendOptions)      |
 
 ##### LegendOptions
 
@@ -137,6 +137,16 @@ Each line can have a legendOptions object in [Values](#values) level.
 | Property Name | Expected | Default | Description                                           |
 | ------------- | -------- | ------- | ----------------------------------------------------- |
 | showElement   | boolean  | true    | Toggle to hide legend when legend item has no data.   |
+
+##### Style
+
+Each line can have a style object in [Values](#values) level.
+
+###### Optional
+
+| Property Name   | Expected | Default | Description                                            |
+| --------------- | -------- | ------- | ------------------------------------------------------ |
+| strokeDashArray | string   | "0"     | Applies stroke-dasharray CSS property to the SVG line. |
 
 ### Values
 
