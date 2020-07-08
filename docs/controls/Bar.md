@@ -216,6 +216,17 @@ Refer [Graph](../core/Graph.md) `Root` for more details.
 | style         | object   | {}           | Any style that can be applied. Refer [Styles](#style)                          |
 | group         | string   | key          | Used for stacking bar content under another bar content. Refer [Group](#group) |
 | axisInfoRow   | array    | []           | Refer [Axis Info Row](#Axis-Info-Row)                                          |
+| legendOptions | object   | undefined    | Option to show legend. Refer [LegendOptions](#legendOptions)                   |
+
+### LegendOptions
+
+Each line can have a legendOptions object in [Values](#values) level.
+
+#### Optional
+
+| Property Name | Expected | Default | Description                                           |
+| ------------- | -------- | ------- | ----------------------------------------------------- |
+| showElement   | boolean  | true    | Toggle to hide legend when legend item has no data.   |
 
 ### Values
 

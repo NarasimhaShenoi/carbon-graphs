@@ -118,29 +118,24 @@ Refer [Graph](../core/Graph.md) `Root` for more details.
 | color         | string   | COLORS.BLACK       | Color for the data point                                                          |
 | shape         | string   | SHAPES.DARK.CIRCLE | Shape for representing the data points                                            |
 | onClick       | Function | undefined          | Any action that can be performed when clicking on the data point                  |
-| legendOptions | object   | undefined          | Option to show/hide shape and/or line. Refer [LegendOptions](#legendOptions)      |
+| legendOptions | object   | undefined          | Toggle to show shape, line and legend. Refer [LegendOptions](#legendOptions)      |
 
-##### LegendOptions
+### LegendOptions
 
-Each line can have a legendOptions object in [Values](#values) level.
+Each paired result can have a legendOptions object in [Values](#values) level.
 
-###### Required
+#### Optional
 
 | Property Name | Expected | Default | Description                                           |
 | ------------- | -------- | ------- | ----------------------------------------------------- |
 | showLine      | boolean  | false   | Display Line in the legend.                           |
 | showShape     | boolean  | true    | Display Shape in the legend.                          |
 | style         | object   | {}      | Any style that can be applied. Refer [Styles](#style) |
-
-#### Optional
-
-| Property Name | Expected | Default | Description                                           |
-| ------------- | -------- | ------- | ----------------------------------------------------- |
 | showElement   | boolean  | true    | Toggle to hide legend when legend item has no data.   |
 
 ##### Style
 
-Each line can have a style object in [Values](#values) level.
+Each paired result can have a style object in [Values](#values) level.
 
 ###### Optional
 

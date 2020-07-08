@@ -182,7 +182,7 @@ Refer [Graph](../core/Graph.md) `Root` for more details.
 | shape         | string   | SHAPES.DARK.CIRCLE | Shape for representing the data points                                                         |
 | onClick       | Function | undefined          | Any action that can be performed when clicking on the data point                               |
 | style         | object   | {}                 | Any style that can be applied. Refer [Styles](#style)                                          |
-| legendOptions | object   | undefined          | Option to show/hide shape and/or line. Refer [LegendOptions](#legendOptions)                   |
+| legendOptions | object   | undefined          | Toggle to show shape, line and legend. Refer [LegendOptions](#legendOptions)                   |
 | showShapes    | boolean  | undefined          | Option to show/hide shapes per data set. This option overrides the graph's showShapes property |
 
 ##### Style
@@ -195,22 +195,17 @@ Each line can have a style object in [Values](#values) level.
 | --------------- | -------- | ------- | ------------------------------------------------------ |
 | strokeDashArray | string   | "0"     | Applies stroke-dasharray CSS property to the SVG line. |
 
-##### LegendOptions
+### LegendOptions
 
 Each line can have a legendOptions object in [Values](#values) level.
 
-###### Required
+#### Optional
 
 | Property Name | Expected | Default | Description                                           |
 | ------------- | -------- | ------- | ----------------------------------------------------- |
 | showLine      | boolean  | false   | Display Line in the legend.                           |
 | showShape     | boolean  | true    | Display Shape in the legend.                          |
 | style         | object   | {}      | Any style that can be applied. Refer [Styles](#style) |
-
-#### Optional
-
-| Property Name | Expected | Default | Description                                           |
-| ------------- | -------- | ------- | ----------------------------------------------------- |
 | showElement   | boolean  | true    | Toggle to hide legend when legend item has no data.   |
 
 ### Values

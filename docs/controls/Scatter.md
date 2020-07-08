@@ -140,14 +140,15 @@ Refer [Graph](../core/Graph.md) `Root` for more details.
 
 #### Optional
 
-| Property Name | Expected | Default            | Description                                                           |
-| ------------- | -------- | ------------------ | --------------------------------------------------------------------- |
-| yAxis         | string   | "y"                | Setting for using different Y based axis. For now: its either Y or Y2 |
-| regions       | array    | []                 | Refer [Regions](#regions)                                             |
-| label         | object   | {}                 | Display value for the data-set which the data points belong to        |
-| color         | string   | COLORS.BLACK       | Color for the data point                                              |
-| shape         | string   | SHAPES.DARK.CIRCLE | Shape for representing the data points                                |
-| onClick       | Function | undefined          | Any action that can be performed when clicking on the data point      |
+| Property Name | Expected | Default            | Description                                                                       |
+| ------------- | -------- | ------------------ | --------------------------------------------------------------------------------- |
+| yAxis         | string   | "y"                | Setting for using different Y based axis. For now: its either Y or Y2             |
+| regions       | array    | []                 | Refer [Regions](#regions)                                                         |
+| label         | object   | {}                 | Display value for the data-set which the data points belong to                    |
+| color         | string   | COLORS.BLACK       | Color for the data point                                                          |
+| shape         | string   | SHAPES.DARK.CIRCLE | Shape for representing the data points                                            |
+| onClick       | Function | undefined          | Any action that can be performed when clicking on the data point                  |
+| legendOptions | object   | undefined          | Toggle to show legend. Refer [LegendOptions](#legendOptions)                      |
 
 ### Values
 
@@ -163,6 +164,16 @@ Refer [Graph](../core/Graph.md) `Root` for more details.
 | Property Name | Expected | Default | Description                                                |
 | ------------- | -------- | ------- | ---------------------------------------------------------- |
 | isCritical    | boolean  | `false` | Shows an indicator surrounding the data point when enabled |
+
+### LegendOptions
+
+Each line can have a legendOptions object in [Values](#values) level.
+
+#### Optional
+
+| Property Name | Expected | Default | Description                                           |
+| ------------- | -------- | ------- | ----------------------------------------------------- |
+| showElement   | boolean  | true    | Toggle to hide legend when legend item has no data.   |
 
 ### Regions
 

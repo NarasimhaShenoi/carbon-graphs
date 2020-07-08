@@ -247,6 +247,17 @@ Refer [Graph](../core/Graph.md) `Root` for more details.
 | label         | object   | {}           | Display value for the data-set which the data points belong to                            |
 | color         | string   | COLORS.BLACK | Color for the bubbles                                                                     |
 | onClick       | Function | undefined    | Any action that can be performed when clicking on the data point                          |
+| legendOptions | object   | undefined    | Toggle to show legend. Refer [LegendOptions](#legendOptions)                              |
+
+### LegendOptions
+
+Each line can have a legendOptions object in [Values](#values) level.
+
+#### Optional
+
+| Property Name | Expected | Default | Description                                           |
+| ------------- | -------- | ------- | ----------------------------------------------------- |
+| showElement   | boolean  | true    | Toggle to hide legend when legend item has no data.   |
 
 ### Weight
 
