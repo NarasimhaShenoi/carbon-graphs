@@ -1226,8 +1226,8 @@ describe("Line - Load", () => {
                 done();
             });
         });
-        describe("if the legend has no data and user sets showElement to be false", () => {
-            it("should hide the legend", () => {
+        describe("when the legend has no data",  () => {
+            it ("should hide the legend if showElement is false", () => {
                 const input = getInput([], false, false);
                 input.legendOptions = {
                     showElement: false
@@ -1243,10 +1243,8 @@ describe("Line - Load", () => {
                     `.${styles.legendItem}`
                 );
                 expect(legendItem.getAttribute("style")).toBe("display: none; padding: 4px 8px;");
-            })
-        });
-        describe("if legend has no data and user sets showElement to be true", () => {
-            it("should show the legend", () => {
+            });
+            it ("should show the legend if showElement is true", () => {
                 const input = getInput([], false, false);
                 input.legendOptions = {
                     showElement: true,
@@ -1265,10 +1263,10 @@ describe("Line - Load", () => {
                 );
                 expect(legendItem.getAttribute("aria-disabled")).toBe("true");
                 expect(legendItem.getAttribute("aria-current")).toBe("true");
-            })
-        });
-        describe("if legend has data and user sets showElement to be false", () => {
-            it("should show the legend", () => {
+            });
+         });
+         describe("when the legend has data",  () => {
+            it ("should show the legend if showElement is false", () => {
                 const input = getInput(valuesDefault, false, false);
                 input.legendOptions = {
                     showElement: true,
@@ -1287,10 +1285,8 @@ describe("Line - Load", () => {
                 );
                 expect(legendItem.getAttribute("aria-disabled")).toBe("false");
                 expect(legendItem.getAttribute("aria-current")).toBe("true");
-            })
-        });
-        describe("if legend has data and user sets showElement to be true", () => {
-            it("should show the legend", () => {
+            });
+            it ("should show the legend if showElement is true", () => {
                 const input = getInput(valuesDefault, false, false);
                 input.legendOptions = {
                     showElement: true,
@@ -1310,7 +1306,7 @@ describe("Line - Load", () => {
                 expect(legendItem.getAttribute("aria-disabled")).toBe("false");
                 expect(legendItem.getAttribute("aria-current")).toBe("true");
             });
-        });
+         });
     });
     describe("Prepares to load label shape", () => {
         let graph;
