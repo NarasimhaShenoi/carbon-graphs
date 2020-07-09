@@ -142,13 +142,13 @@ Refer [Graph](../core/Graph.md) `Root` for more details.
 
 | Property Name | Expected | Default            | Description                                                                       |
 | ------------- | -------- | ------------------ | --------------------------------------------------------------------------------- |
-| yAxis         | string   | "y"                | Setting for using different Y based axis. For now: its either Y or Y2             |
-| regions       | array    | []                 | Refer [Regions](#regions)                                                         |
-| label         | object   | {}                 | Display value for the data-set which the data points belong to                    |
 | color         | string   | COLORS.BLACK       | Color for the data point                                                          |
-| shape         | string   | SHAPES.DARK.CIRCLE | Shape for representing the data points                                            |
-| onClick       | Function | undefined          | Any action that can be performed when clicking on the data point                  |
+| label         | object   | {}                 | Display value for the data-set which the data points belong to                    |
 | legendOptions | object   | undefined          | Toggle to show legend. Refer [LegendOptions](#legendOptions)                      |
+| onClick       | Function | undefined          | Any action that can be performed when clicking on the data point                  |
+| regions       | array    | []                 | Refer [Regions](#regions)                                                         |
+| shape         | string   | SHAPES.DARK.CIRCLE | Shape for representing the data points                                            |
+| yAxis         | string   | "y"                | Setting for using different Y based axis. For now: its either Y or Y2             |
 
 ### Values
 

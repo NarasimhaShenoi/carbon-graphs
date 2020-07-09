@@ -174,16 +174,16 @@ Refer [Graph](../core/Graph.md) `Root` for more details.
 
 | Property Name | Expected | Default            | Description                                                                                    |
 | ------------- | -------- | ------------------ | ---------------------------------------------------------------------------------------------- |
-| yAxis         | string   | "y"                | Setting for using different Y based axis. For now: its either Y or Y2                          |
-| type          | string   | LINE_TYPE.LINEAR   | Nature of line that needs to be drawn (Linear or Cardinal)                                     |
-| regions       | array    | []                 | Refer [Regions](#regions)                                                                      |
-| label         | object   | {}                 | Display value for the data-set which the data points belong to                                 |
 | color         | string   | COLORS.BLACK       | Color for the data point and line                                                              |
-| shape         | string   | SHAPES.DARK.CIRCLE | Shape for representing the data points                                                         |
-| onClick       | Function | undefined          | Any action that can be performed when clicking on the data point                               |
-| style         | object   | {}                 | Any style that can be applied. Refer [Styles](#style)                                          |
+| label         | object   | {}                 | Display value for the data-set which the data points belong to                                 |
 | legendOptions | object   | undefined          | Toggle to show shape, line and legend. Refer [LegendOptions](#legendOptions)                   |
+| onClick       | Function | undefined          | Any action that can be performed when clicking on the data point                               |
+| regions       | array    | []                 | Refer [Regions](#regions)                                                                      |
+| shape         | string   | SHAPES.DARK.CIRCLE | Shape for representing the data points                                                         |
+| style         | object   | {}                 | Any style that can be applied. Refer [Styles](#style)                                          |
 | showShapes    | boolean  | undefined          | Option to show/hide shapes per data set. This option overrides the graph's showShapes property |
+| type          | string   | LINE_TYPE.LINEAR   | Nature of line that needs to be drawn (Linear or Cardinal)                                     |
+| yAxis         | string   | "y"                | Setting for using different Y based axis. For now: its either Y or Y2                          |
 
 ##### Style
 
