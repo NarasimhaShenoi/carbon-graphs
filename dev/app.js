@@ -248,6 +248,7 @@ renderSiteApp(
                     },
                     title: "Graph and Legend Padding Reduced"
                 },
+                {
                     pathname: "/line/suppress-tick-values-trailing-zeros",
                     content: renderLineWithSuppressedTrailingZeros,
                     title: "Suppress Tick Values Trailing Zeros"
