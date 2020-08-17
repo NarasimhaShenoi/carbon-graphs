@@ -458,6 +458,47 @@ const getLegendPadding = (config, inputLegendPadding) => {
 };
 
 /**
+ * Updates the legends during reflow.
+ *
+ * @private
+ * @param {object} legendSVG - d3 element path of the legend from the parent control
+ * @param {object} t - input item object processed from the input JSON
+ * @param {object} graph - Graph object derived from input JSON
+ * @param {object} eventHandlers - Callback function object executed when legend item is clicked or hovered.
+ * Contains click and hover handlers as object property
+ * @returns {object} returns the d3 element path for the legend
+ */
+const reflowLegend = (legendSVG, t, graph, eventHandlers) => {
+    const index = graph.config.shownTargets.indexOf(t.key);
+    const shouldForceDisableLegendItem =
+        !!t.label.isDisabled || utils.isEmptyArray(t.values);
+    const itemPath = legendSVG
+        .select(`li[aria-describedby="${t.key}"]`)
+        .attr("aria-current", shouldForceDisableLegendItem || index > -1)
+        .attr("aria-disabled", shouldForceDisableLegendItem)
+        .style("display", legendDisplayStyle(t));
+
+    if (!shouldForceDisableLegendItem) {
+        itemPath
+            .on("click", function () {
+                return eventHandlers.clickHandler(this, t);
+            })
+            .on("mouseenter", () =>
+                eventHandlers.hoverHandler(t, constants.HOVER_EVENT.MOUSE_ENTER)
+            )
+            .on("mouseleave", () =>
+                eventHandlers.hoverHandler(t, constants.HOVER_EVENT.MOUSE_EXIT)
+            );
+    } else {
+        itemPath
+            .on("click", () => null)
+            .on("mouseenter", () => null)
+            .on("mouseleave", () => null);
+    }
+    return legendSVG;
+};
+
+/**
  * @enum {Function}
  */
 export {
@@ -469,5 +510,6 @@ export {
     legendHoverHandler,
     isLegendSelected,
     getDefaultLegendOptions,
-    getLegendPadding
+    getLegendPadding,
+    reflowLegend
 };

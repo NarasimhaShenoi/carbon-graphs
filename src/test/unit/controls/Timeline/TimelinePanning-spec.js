@@ -87,6 +87,22 @@ describe("Panning", () => {
             timelineContent = fetchAllElementsByClass(styles.pointGroup);
             expect(timelineContent.length).toEqual(2);
         });
+        it("Dynamic Data is updated when it is no data scenario", () => {
+            const panData = {
+                key: "uid_1",
+                values: []
+            };
+            let timelineContent = fetchAllElementsByClass(styles.pointGroup);
+            expect(timelineContent.length).toEqual(2);
+            const legendItem = document.body.querySelector(
+                `.${styles.legendItem}`
+            );
+            timeline.reflow(panData);
+            timelineContent = fetchAllElementsByClass(styles.pointGroup);
+            expect(timelineContent.length).toEqual(0);
+            expect(legendItem.getAttribute("aria-disabled")).toBe("true");
+            expect(legendItem.getAttribute("aria-current")).toBe("true");
+        });
     });
     describe("When disabled", () => {
         beforeEach(() => {

@@ -442,6 +442,17 @@ class Graph extends Construct {
             ) {
                 updateAxesDomain(this.config, this.content[position]);
             }
+            if (
+                this.config.showNoDataText &&
+                this.content.every((content) =>
+                    utils.isEmpty(content.config.values)
+                )
+            ) {
+                drawNoDataView(this.config, this.svg);
+                redrawDatelineContent(this.scale, this.config, this.svg);
+            } else if (utils.notEmpty(this.content[position].config.values)) {
+                removeNoDataView(this.svg);
+            }
         }
         this.resize();
         return this;
