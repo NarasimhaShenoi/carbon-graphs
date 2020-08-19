@@ -570,12 +570,17 @@ export const renderLinePanningWithDynamicData = (id) => {
     const graphData = utils.deepClone(
         getDemoData(`#${id}`, "LINE_TIMESERIES_DATELINE").data[0]
     );
+    let graphDataH = {
+        ...graphData,
+        values: []
+    };
     graphData.regions = [regions[0]];
     const createGraph = () => {
         const graphDataY = utils.deepClone(
             getDemoData(`#${id}`, "LINE_TIMESERIES_DATELINE").data[1]
         );
-        graph.reflow(graphDataY);
+        graph.reflow(graphDataH);
+        graphDataH = graphDataY;
     };
 
     const graph = Carbon.api.graph(axisData);
