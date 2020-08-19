@@ -397,7 +397,7 @@ class Graph extends Construct {
     /**
      * Updates the graph axisData and content.
      *
-     * @param {Array} graphData - Input array that holds updated values and key
+     * @param {Array} graphData - Input array that holds updated values, key and labels
      * @returns {Graph} - Graph instance
      */
     reflow(graphData) {
@@ -442,6 +442,14 @@ class Graph extends Construct {
             ) {
                 updateAxesDomain(this.config, this.content[position]);
             }
+        }
+        if (graphData && this.config.showLabel) {
+            this.config.axis.x.label =
+                utils.sanitize(graphData.xlabel) || this.config.axis.x.label;
+            this.config.axis.y.label =
+                utils.sanitize(graphData.ylabel) || this.config.axis.y.label;
+            this.config.axis.y2.label =
+                utils.sanitize(graphData.y2label) || this.config.axis.y2.label;
         }
         this.resize();
         return this;
