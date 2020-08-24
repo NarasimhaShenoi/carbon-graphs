@@ -139,7 +139,7 @@ describe("PairedResult", () => {
             );
             expect(pairedContent.length).toEqual(2);
         });
-        it("Dynamic Data is updated when it is no data scenario", () => {
+        it("Dynamic data is updated when there is no data", () => {
             const panData = {
                 key: "uid_1",
                 values: []
