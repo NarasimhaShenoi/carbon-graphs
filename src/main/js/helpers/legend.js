@@ -479,6 +479,7 @@ const reflowLegend = (legendSVG, legend, graph, eventHandlers) => {
         .style("display", legendDisplayStyle(legend));
 
     if (!shouldForceDisableLegendItem) {
+        // set the click and hover handler, when legend have values
         itemPath
             .on("click", function () {
                 return eventHandlers.clickHandler(this, legend);
@@ -490,6 +491,7 @@ const reflowLegend = (legendSVG, legend, graph, eventHandlers) => {
                 eventHandlers.hoverHandler(legend, constants.HOVER_EVENT.MOUSE_EXIT)
             );
     } else {
+        // set the click and hover handler to null, when legend doesnot have any value
         itemPath
             .on("click", () => null)
             .on("mouseenter", () => null)
