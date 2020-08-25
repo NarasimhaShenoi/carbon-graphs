@@ -633,7 +633,7 @@ renderSiteApp(
                             title: "Dynamic Data"
                         },
                         {
-                            pathname: "/panning/line/updated-legend",
+                            pathname: "/panning/line/dynamic-data/updated-legend",
                             content: renderLinePanningWithUpdatedLegend,
                             title: "Legend Updated"
                         }
