@@ -275,9 +275,8 @@ class PairedResult extends GraphContent {
                     type
                 }
             );
-        const reflow = !!this.config.values.length;
         this.config.values = graphData.values;
-        this.dataTarget = processDataPoints(graph.config, this.config, reflow);
+        this.dataTarget = processDataPoints(graph.config, this.config, !!this.config.values.length);
         const drawBox = (boxPath) => {
             drawSelectionIndicator(graph.scale, graph.config, boxPath);
             drawLine(graph.scale, graph.config, boxPath);
