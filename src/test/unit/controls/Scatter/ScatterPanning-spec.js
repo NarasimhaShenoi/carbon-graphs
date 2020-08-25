@@ -177,7 +177,7 @@ describe("Scatter - Panning", () => {
             });
         });
     });
-    describe("No Data Scenario", () => {
+    describe("On click of panning button", () => {
         beforeEach(() => {
             const axisData = utils.deepClone(getAxes(axisTimeSeries));
             axisData.dateline = [
@@ -196,7 +196,7 @@ describe("Scatter - Panning", () => {
             graphDefault = new Graph(axisData);
             graphDefault.loadContent(new Scatter(input));
         });
-        it("is removed when legend hold values", () => {
+        it("No Data View is removed when legend hold values", () => {
             const panData = {
                 key: "uid_1",
                 values: [
