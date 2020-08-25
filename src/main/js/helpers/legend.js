@@ -458,7 +458,7 @@ const getLegendPadding = (config, inputLegendPadding) => {
 };
 
 /**
- * Updates the legends during reflow.
+ * Updates the legend during reflow.
  *
  * @private
  * @param {object} legendSVG - d3 element path of the legend from the parent control
