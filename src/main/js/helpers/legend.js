@@ -462,32 +462,32 @@ const getLegendPadding = (config, inputLegendPadding) => {
  *
  * @private
  * @param {object} legendSVG - d3 element path of the legend from the parent control
- * @param {object} t - input item object processed from the input JSON
+ * @param {object} legend - input item object processed from the input JSON
  * @param {object} graph - Graph object derived from input JSON
  * @param {object} eventHandlers - Callback function object executed when legend item is clicked or hovered.
  * Contains click and hover handlers as object property
  * @returns {object} returns the d3 element path for the legend
  */
-const reflowLegend = (legendSVG, t, graph, eventHandlers) => {
-    const index = graph.config.shownTargets.indexOf(t.key);
+const reflowLegend = (legendSVG, legend, graph, eventHandlers) => {
+    const index = graph.config.shownTargets.indexOf(legend.key);
     const shouldForceDisableLegendItem =
-        !!t.label.isDisabled || utils.isEmptyArray(t.values);
+        !!legend.label.isDisabled || utils.isEmptyArray(legend.values);
     const itemPath = legendSVG
-        .select(`li[aria-describedby="${t.key}"]`)
+        .select(`li[aria-describedby="${legend.key}"]`)
         .attr("aria-current", shouldForceDisableLegendItem || index > -1)
         .attr("aria-disabled", shouldForceDisableLegendItem)
-        .style("display", legendDisplayStyle(t));
+        .style("display", legendDisplayStyle(legend));
 
     if (!shouldForceDisableLegendItem) {
         itemPath
             .on("click", function () {
-                return eventHandlers.clickHandler(this, t);
+                return eventHandlers.clickHandler(this, legend);
             })
             .on("mouseenter", () =>
-                eventHandlers.hoverHandler(t, constants.HOVER_EVENT.MOUSE_ENTER)
+                eventHandlers.hoverHandler(legend, constants.HOVER_EVENT.MOUSE_ENTER)
             )
             .on("mouseleave", () =>
-                eventHandlers.hoverHandler(t, constants.HOVER_EVENT.MOUSE_EXIT)
+                eventHandlers.hoverHandler(legend, constants.HOVER_EVENT.MOUSE_EXIT)
             );
     } else {
         itemPath
