@@ -144,7 +144,7 @@ describe("PairedResult", () => {
             );
             expect(pairedContent.length).toEqual(2);
         });
-        it("Label gets updated during reflow", () => {
+        it("should update the label during reflow", () => {
             const panData = {
                 key: "uid_1",
                 values: [
