@@ -198,38 +198,40 @@ describe("Scatter - Panning", () => {
             graphDefault = new Graph(axisData);
             graphDefault.loadContent(new Scatter(input));
         });
-        it("No Data View is removed when legend hold values", () => {
-            const panData = {
-                key: "uid_1",
-                values: [
-                    {
-                        x: "2016-03-03T12:00:00Z",
-                        y: 2
-                    },
-                    {
-                        x: "2016-04-03T12:00:00Z",
-                        y: 20
-                    }
-                ]
-            };
-            let ScatterContent = fetchAllElementsByClass(
-                scatterGraphContainer,
-                styles.pointGroup
-            );
-            const legendItem = document.body.querySelector(
-                `.${styles.legendItem}`
-            );
-            expect(legendItem.getAttribute("aria-disabled")).toBe("true");
-            expect(legendItem.getAttribute("aria-current")).toBe("true");
-            expect(ScatterContent.length).toEqual(0);
-            graphDefault.reflow(panData);
-            ScatterContent = fetchAllElementsByClass(
-                scatterGraphContainer,
-                styles.pointGroup
-            );
-            expect(ScatterContent.length).toEqual(2);
-            expect(legendItem.getAttribute("aria-disabled")).toBe("false");
-            expect(legendItem.getAttribute("aria-current")).toBe("true");
+        describe("when legend hold values", () => {
+            it("should remove the No Data Views", () => {
+                const panData = {
+                    key: "uid_1",
+                    values: [
+                        {
+                            x: "2016-03-03T12:00:00Z",
+                            y: 2
+                        },
+                        {
+                            x: "2016-04-03T12:00:00Z",
+                            y: 20
+                        }
+                    ]
+                };
+                let ScatterContent = fetchAllElementsByClass(
+                    scatterGraphContainer,
+                    styles.pointGroup
+                );
+                const legendItem = document.body.querySelector(
+                    `.${styles.legendItem}`
+                );
+                expect(legendItem.getAttribute("aria-disabled")).toBe("true");
+                expect(legendItem.getAttribute("aria-current")).toBe("true");
+                expect(ScatterContent.length).toEqual(0);
+                graphDefault.reflow(panData);
+                ScatterContent = fetchAllElementsByClass(
+                    scatterGraphContainer,
+                    styles.pointGroup
+                );
+                expect(ScatterContent.length).toEqual(2);
+                expect(legendItem.getAttribute("aria-disabled")).toBe("false");
+                expect(legendItem.getAttribute("aria-current")).toBe("true");
+            });
         });
     });
 });

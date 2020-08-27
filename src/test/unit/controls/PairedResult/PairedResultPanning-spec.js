@@ -219,44 +219,46 @@ describe("PairedResult", () => {
             graphDefault = new Graph(axisData);
             graphDefault.loadContent(new PairedResult(input));
         });
-        it("No Data View is removed when legend hold values", () => {
-            const panData = {
-                key: "uid_1",
-                values: [
-                    {
-                        high: {
-                            x: "2016-09-17T12:00:00Z",
-                            y: 110
-                        },
-                        mid: {
-                            x: "2016-09-18T12:00:00Z",
-                            y: 70
-                        },
-                        low: {
-                            x: "2016-09-19T02:00:00Z",
-                            y: 30
+        describe("when legend hold values", () => {
+            it("should remove the No Data Views", () => {
+                const panData = {
+                    key: "uid_1",
+                    values: [
+                        {
+                            high: {
+                                x: "2016-09-17T12:00:00Z",
+                                y: 110
+                            },
+                            mid: {
+                                x: "2016-09-18T12:00:00Z",
+                                y: 70
+                            },
+                            low: {
+                                x: "2016-09-19T02:00:00Z",
+                                y: 30
+                            }
                         }
-                    }
-                ]
-            };
-            let pairedContent = fetchAllElementsByClass(
-                pairedResultGraphContainer,
-                styles.pairedBox
-            );
-            const legendItem = document.body.querySelector(
-                `.${styles.legendItem}`
-            );
-            expect(legendItem.getAttribute("aria-disabled")).toBe("true");
-            expect(legendItem.getAttribute("aria-current")).toBe("true");
-            expect(pairedContent.length).toEqual(0);
-            graphDefault.reflow(panData);
-            pairedContent = fetchAllElementsByClass(
-                pairedResultGraphContainer,
-                styles.pairedBox
-            );
-            expect(pairedContent.length).toEqual(1);
-            expect(legendItem.getAttribute("aria-disabled")).toBe("false");
-            expect(legendItem.getAttribute("aria-current")).toBe("true");
+                    ]
+                };
+                let pairedContent = fetchAllElementsByClass(
+                    pairedResultGraphContainer,
+                    styles.pairedBox
+                );
+                const legendItem = document.body.querySelector(
+                    `.${styles.legendItem}`
+                );
+                expect(legendItem.getAttribute("aria-disabled")).toBe("true");
+                expect(legendItem.getAttribute("aria-current")).toBe("true");
+                expect(pairedContent.length).toEqual(0);
+                graphDefault.reflow(panData);
+                pairedContent = fetchAllElementsByClass(
+                    pairedResultGraphContainer,
+                    styles.pairedBox
+                );
+                expect(pairedContent.length).toEqual(1);
+                expect(legendItem.getAttribute("aria-disabled")).toBe("false");
+                expect(legendItem.getAttribute("aria-current")).toBe("true");
+            });
         });
     });
 });
