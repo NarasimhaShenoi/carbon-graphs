@@ -126,29 +126,31 @@ describe("Line - Panning", () => {
             );
             expect(lineContent.length).toEqual(3);
         });
-        it("Dynamic data is updated when there is no data", () => {
-            const panData = {
-                key: "uid_1",
-                values: []
-            };
-            let lineContent = fetchAllElementsByClass(
-                lineGraphContainer,
-                styles.pointGroup
-            );
-            const legendItem = document.body.querySelector(
-                `.${styles.legendItem}`
-            );
-            expect(lineContent.length).toEqual(3);
-
-            graphDefault.reflow(panData);
-            lineContent = fetchAllElementsByClass(
-                lineGraphContainer,
-                styles.pointGroup
-            );
-            expect(lineContent.length).toEqual(0);
-            expect(legendItem.getAttribute("aria-disabled")).toBe("true");
-            expect(legendItem.getAttribute("aria-current")).toBe("true");
-        });
+        describe("when there is no data", () => {
+            it("should update the dynamic data and disable the legend", () => {
+                const panData = {
+                    key: "uid_1",
+                    values: []
+                };
+                let lineContent = fetchAllElementsByClass(
+                    lineGraphContainer,
+                    styles.pointGroup
+                );
+                const legendItem = document.body.querySelector(
+                    `.${styles.legendItem}`
+                );
+                expect(lineContent.length).toEqual(3);
+    
+                graphDefault.reflow(panData);
+                lineContent = fetchAllElementsByClass(
+                    lineGraphContainer,
+                    styles.pointGroup
+                );
+                expect(lineContent.length).toEqual(0);
+                expect(legendItem.getAttribute("aria-disabled")).toBe("true");
+                expect(legendItem.getAttribute("aria-current")).toBe("true");
+           });
+       });
     });
     describe("When pan is disabled", () => {
         beforeEach(() => {

@@ -139,28 +139,30 @@ describe("PairedResult", () => {
             );
             expect(pairedContent.length).toEqual(2);
         });
-        it("Dynamic data is updated when there is no data", () => {
-            const panData = {
-                key: "uid_1",
-                values: []
-            };
-            let pairedContent = fetchAllElementsByClass(
-                pairedResultGraphContainer,
-                styles.pairedBox
-            );
-            const legendItem = document.body.querySelector(
-                `.${styles.legendItem}`
-            );
-            expect(pairedContent.length).toEqual(2);
-            graphDefault.reflow(panData);
-            pairedContent = fetchAllElementsByClass(
-                pairedResultGraphContainer,
-                styles.pairedBox
-            );
-            expect(pairedContent.length).toEqual(0);
-            expect(legendItem.getAttribute("aria-disabled")).toBe("true");
-            expect(legendItem.getAttribute("aria-current")).toBe("true");
-        });
+        describe("when there is no data", () => {
+           it("should update the dynamic data and disable the legend", () => {
+                const panData = {
+                    key: "uid_1",
+                    values: []
+                };
+                let pairedContent = fetchAllElementsByClass(
+                    pairedResultGraphContainer,
+                    styles.pairedBox
+                );
+                const legendItem = document.body.querySelector(
+                    `.${styles.legendItem}`
+                );
+                expect(pairedContent.length).toEqual(2);
+                graphDefault.reflow(panData);
+                pairedContent = fetchAllElementsByClass(
+                    pairedResultGraphContainer,
+                    styles.pairedBox
+                );
+                expect(pairedContent.length).toEqual(0);
+                expect(legendItem.getAttribute("aria-disabled")).toBe("true");
+                expect(legendItem.getAttribute("aria-current")).toBe("true");
+           });
+       });
     });
     describe("When pan is disabled", () => {
         beforeEach(() => {
