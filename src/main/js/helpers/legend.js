@@ -101,7 +101,9 @@ const loadLegendItem = (legendSVG, t, config, eventHandlers) => {
         );
     if (!shouldForceDisableLegendItem && index > -1) {
         itemPath
-            .on("click", () => eventHandlers.clickHandler(this, t))
+            .on("click", function () {
+                return eventHandlers.clickHandler(this, t);
+            })
             .on("mouseenter", () =>
                 eventHandlers.hoverHandler(t, constants.HOVER_EVENT.MOUSE_ENTER)
             )
@@ -449,6 +451,7 @@ const getLegendPadding = (config, inputLegendPadding) => {
 /**
  * Updates the legend during reflow.
  *
+ * @private
  * @param {object} legendSVG - d3 element path of the legend from the parent control
  * @param {object} legend - input item object processed from the input JSON
  * @param {object} graph - Graph object derived from input JSON
@@ -469,7 +472,9 @@ const reflowLegend = (legendSVG, legend, graph, eventHandlers) => {
     if (!shouldForceDisableLegendItem) {
         // set the click and hover handler, when legend have values
         itemPath
-            .on("click", () => eventHandlers.clickHandler(this, legend))
+            .on("click", function () {
+                return eventHandlers.clickHandler(this, legend);
+            })
             .on("mouseenter", () =>
                 eventHandlers.hoverHandler(legend, constants.HOVER_EVENT.MOUSE_ENTER)
             )
