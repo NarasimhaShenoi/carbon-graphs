@@ -74,43 +74,81 @@ describe("PairedResult", () => {
                 done();
             });
         });
-        it("Dynamic Data is updated correctly when key matches and label is retained when it is not passed", () => {
-            const panData = {
-                key: "uid_1",
-                values: [
-                    {
-                        high: {
-                            x: "2016-09-17T12:00:00Z",
-                            y: 110
-                        },
-                        mid: {
-                            x: "2016-09-18T12:00:00Z",
-                            y: 70
-                        },
-                        low: {
-                            x: "2016-09-19T02:00:00Z",
-                            y: 30
-                        }
-                    }
-                ]
-            };
-            let pairedContent = fetchAllElementsByClass(
-                pairedResultGraphContainer,
-                styles.pairedBox
-            );
-            expect(pairedContent.length).toEqual(2);
-            graphDefault.reflow(panData);
-            pairedContent = fetchAllElementsByClass(
-                pairedResultGraphContainer,
-                styles.pairedBox
-            );
-            expect(pairedContent.length).toEqual(1);
-            const axisLabelX = fetchElementByClass(pairedResultGraphContainer, styles.axisLabelX);
-            const axisLabelY = fetchElementByClass(pairedResultGraphContainer, styles.axisLabelY);
-            const axisLabelY2 = fetchElementByClass(pairedResultGraphContainer, styles.axisLabelY2);
-            expect(axisLabelX.querySelector("text").textContent).toBe("X Label");
-            expect(axisLabelY.querySelector("text").textContent).toBe("Y Label");
-            expect(axisLabelY2.querySelector("text").textContent).toBe("Y2 Label");
+        
+        describe("when key matches", () => {
+            describe("label is not passed", () => {
+                 it("should update dynamic data and retain label", () => {
+                    const panData = {
+                        key: "uid_1",
+                        values: [
+                            {
+                                high: {
+                                    x: "2016-09-17T12:00:00Z",
+                                    y: 110
+                                },
+                                mid: {
+                                    x: "2016-09-18T12:00:00Z",
+                                    y: 70
+                                },
+                                low: {
+                                    x: "2016-09-19T02:00:00Z",
+                                    y: 30
+                                }
+                            }
+                        ]
+                    };
+                    let pairedContent = fetchAllElementsByClass(
+                        pairedResultGraphContainer,
+                        styles.pairedBox
+                    );
+                    expect(pairedContent.length).toEqual(2);
+                    graphDefault.reflow(panData);
+                    pairedContent = fetchAllElementsByClass(
+                        pairedResultGraphContainer,
+                        styles.pairedBox
+                    );
+                    expect(pairedContent.length).toEqual(1);
+                    const axisLabelX = fetchElementByClass(pairedResultGraphContainer, styles.axisLabelX);
+                    const axisLabelY = fetchElementByClass(pairedResultGraphContainer, styles.axisLabelY);
+                    const axisLabelY2 = fetchElementByClass(pairedResultGraphContainer, styles.axisLabelY2);
+                    expect(axisLabelX.querySelector("text").textContent).toBe("X Label");
+                    expect(axisLabelY.querySelector("text").textContent).toBe("Y Label");
+                    expect(axisLabelY2.querySelector("text").textContent).toBe("Y2 Label");
+                });
+             });
+             describe("when label is passed", () => {
+                it("should update the label during reflow", () => {
+                    const panData = {
+                        key: "uid_1",
+                        values: [
+                            {
+                                high: {
+                                    x: "2016-09-17T12:00:00Z",
+                                    y: 110
+                                },
+                                mid: {
+                                    x: "2016-09-18T12:00:00Z",
+                                    y: 70
+                                },
+                                low: {
+                                    x: "2016-09-19T02:00:00Z",
+                                    y: 30
+                                }
+                            }
+                        ],
+                        xlabel: "updated xlabel",
+                        ylabel: "updated ylabel",
+                        y2label: "updated y2label"
+                    };
+                    graphDefault.reflow(panData);
+                    const axisLabelX = fetchElementByClass(pairedResultGraphContainer, styles.axisLabelX);
+                    const axisLabelY = fetchElementByClass(pairedResultGraphContainer, styles.axisLabelY);
+                    const axisLabelY2 = fetchElementByClass(pairedResultGraphContainer, styles.axisLabelY2);
+                    expect(axisLabelX.querySelector("text").textContent).toBe("updated xlabel");
+                    expect(axisLabelY.querySelector("text").textContent).toBe("updated ylabel");
+                    expect(axisLabelY2.querySelector("text").textContent).toBe("updated y2label");
+                });
+             })
         });
         it("Dynamic Data is not updated when key does not match", () => {
             const panData = {
@@ -143,37 +181,6 @@ describe("PairedResult", () => {
                 styles.pairedBox
             );
             expect(pairedContent.length).toEqual(2);
-        });
-        it("should update the label during reflow", () => {
-            const panData = {
-                key: "uid_1",
-                values: [
-                    {
-                        high: {
-                            x: "2016-09-17T12:00:00Z",
-                            y: 110
-                        },
-                        mid: {
-                            x: "2016-09-18T12:00:00Z",
-                            y: 70
-                        },
-                        low: {
-                            x: "2016-09-19T02:00:00Z",
-                            y: 30
-                        }
-                    }
-                ],
-                xlabel: "updated xlabel",
-                ylabel: "updated ylabel",
-                y2label: "updated y2label"
-            };
-            graphDefault.reflow(panData);
-            const axisLabelX = fetchElementByClass(pairedResultGraphContainer, styles.axisLabelX);
-            const axisLabelY = fetchElementByClass(pairedResultGraphContainer, styles.axisLabelY);
-            const axisLabelY2 = fetchElementByClass(pairedResultGraphContainer, styles.axisLabelY2);
-            expect(axisLabelX.querySelector("text").textContent).toBe("updated xlabel");
-            expect(axisLabelY.querySelector("text").textContent).toBe("updated ylabel");
-            expect(axisLabelY2.querySelector("text").textContent).toBe("updated y2label");
         });
     });
     describe("When pan is disabled", () => {
