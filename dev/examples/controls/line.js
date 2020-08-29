@@ -535,7 +535,6 @@ export const renderLineY2AxisWithPanning = (id) => {
     );
     const graphDataY3 = {
         ...graphDataY2,
-        values: [],
         xLabel: "xLabel",
         yLabel: "yLabel",
         y2Label: "y2Label"
