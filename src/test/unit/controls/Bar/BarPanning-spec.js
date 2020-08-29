@@ -119,17 +119,17 @@ describe("Bar - Panning", () => {
                                 y: 20
                             }
                         ],
-                        xlabel: "updated xlabel",
-                        ylabel: "updated ylabel",
-                        y2label: "updated y2label"
+                        xLabel: "updated xLabel",
+                        yLabel: "updated yLabel",
+                        y2Label: "updated y2Label"
                     };
                     graphDefault.reflow(panData);
                     const axisLabelX = fetchElementByClass(barGraphContainer, styles.axisLabelX);
                     const axisLabelY = fetchElementByClass(barGraphContainer, styles.axisLabelY);
                     const axisLabelY2 = fetchElementByClass(barGraphContainer, styles.axisLabelY2);
-                    expect(axisLabelX.querySelector("text").textContent).toBe("updated xlabel");
-                    expect(axisLabelY.querySelector("text").textContent).toBe("updated ylabel");
-                    expect(axisLabelY2.querySelector("text").textContent).toBe("updated y2label");
+                    expect(axisLabelX.querySelector("text").textContent).toBe("updated xLabel");
+                    expect(axisLabelY.querySelector("text").textContent).toBe("updated yLabel");
+                    expect(axisLabelY2.querySelector("text").textContent).toBe("updated y2Label");
                 });
              })
         });

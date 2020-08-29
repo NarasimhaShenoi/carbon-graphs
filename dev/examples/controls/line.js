@@ -536,9 +536,9 @@ export const renderLineY2AxisWithPanning = (id) => {
     const graphDataY3 = {
         ...graphDataY2,
         values: [],
-        xlabel: "xlabel",
-        ylabel: "ylabel",
-        y2label: "y2label"
+        xLabel: "xLabel",
+        yLabel: "yLabel",
+        y2Label: "y2Label"
     };
     const createGraph = () => {
         graph.reflow(graphDataY3);

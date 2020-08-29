@@ -456,11 +456,11 @@ class Graph extends Construct {
         }
         if (graphData && this.config.showLabel) {
             this.config.axis.x.label =
-                utils.sanitize(graphData.xlabel) || this.config.axis.x.label;
+                utils.sanitize(graphData.xLabel) || this.config.axis.x.label;
             this.config.axis.y.label =
-                utils.sanitize(graphData.ylabel) || this.config.axis.y.label;
+                utils.sanitize(graphData.yLabel) || this.config.axis.y.label;
             this.config.axis.y2.label =
-                utils.sanitize(graphData.y2label) || this.config.axis.y2.label;
+                utils.sanitize(graphData.y2Label) || this.config.axis.y2.label;
         }
         this.resize();
         return this;
