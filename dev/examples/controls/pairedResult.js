@@ -226,6 +226,10 @@ const graphData = [
                 }
             }
         ]
+    },
+    {
+        key: "uid_2",
+        values: []
     }
 ];
 export const renderPairedResult = (id) => {
@@ -562,7 +566,8 @@ export const renderPairedResultY2AxisWithPanning = (id) => {
     axisData.axis.y2.show = true;
 
     const createGraph = () => {
-        graph.reflow();
+        graph.reflow(graphData[2]);
+        graph.reflow(graphData[3]);
     };
 
     const graph = Carbon.api.graph(axisData);
